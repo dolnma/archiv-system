@@ -1,5 +1,5 @@
 $(document)
-.on("submit", "form.js-register, form.js-login", function(event) {
+.on("submit", "form.js-register", function(event) {
 	event.preventDefault();
 
 	var _form = $(this);
@@ -15,7 +15,7 @@ $(document)
 			.text("Please enter a valid email address")
 			.show();
 		return false;
-	} else if (dataObj.password.length < 11) {
+	} else if (dataObj.password.length < 4) {
 		_error
 			.text("Please enter a passphrase that is at least 11 characters long.")
 			.show();
@@ -48,7 +48,7 @@ $(document)
 	.always(function ajaxAlwaysDoThis(data) {
 		// Always do
 		console.log('Always');
-	})
+	});
 
 	return false;
 })
@@ -87,7 +87,6 @@ $(document)
 		async: true,
 	})
 	.done(function ajaxDone(data) {
-		console.log(data);
 		// Whatever data is 
 		if(data.redirect !== undefined) {
 			window.location = data.redirect;
@@ -103,7 +102,6 @@ $(document)
 	.always(function ajaxAlwaysDoThis(data) {
 		// Always do
 		console.log('Always');
-	})
-
+	});
 	return false;
-})
+});

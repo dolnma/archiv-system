@@ -19,7 +19,7 @@ class User {
 
 		$user_id = Filter::Int( $user_id );
 
-		$user = $this->con->prepare("SELECT user_id, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
+		$user = $this->con->prepare("SELECT id, email, reg_time FROM users WHERE id = :user_id LIMIT 1");
 		$user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 		$user->execute();
 
@@ -27,7 +27,7 @@ class User {
 			$user = $user->fetch(PDO::FETCH_OBJ);
 
 			$this->email 		= (string) $user->email;
-			$this->user_id 		= (int) $user->user_id;
+			$this->id	 		= (int) $user->id;
 			$this->reg_time 	= (string) $user->reg_time;
 		} else {
 			// No user.
@@ -55,7 +55,7 @@ class User {
 		// Make sure the user does not exist. 
 		$email = (string) Filter::String( $email );
 
-		$findUser = $con->prepare("SELECT user_id, password FROM users WHERE email = LOWER(:email) LIMIT 1");
+		$findUser = $con->prepare("SELECT id, password FROM users WHERE email = LOWER(:email) LIMIT 1");
 		$findUser->bindParam(':email', $email, PDO::PARAM_STR);
 		$findUser->execute();
 

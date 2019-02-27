@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="follow">
 
-    <title>Page Title</title>
+    <title>Přihlášení</title>
 
     <base href="/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.24/css/uikit.min.css" />
@@ -38,7 +38,7 @@
 			    </div>
 
 			    <div class="uk-margin">
-			        <label class="uk-form-label" for="form-stacked-text">Password</label>
+			        <label class="uk-form-label" for="form-stacked-text">Heslo</label>
 			        <div class="uk-form-controls">
 			            <input class="uk-input" id="form-stacked-text" type="password" required='required' placeholder="Your Password">
 			        </div>
@@ -47,7 +47,7 @@
 			    <div class="uk-margin uk-alert uk-alert-danger js-error" style='display: none;'></div>
 
 			    <div class="uk-margin">
-			        <button class="uk-button uk-button-default" type="submit">Login</button>
+			        <button class="uk-button uk-button-default" type="submit">Přihlásit se</button>
 			    </div>
 
 			</form>

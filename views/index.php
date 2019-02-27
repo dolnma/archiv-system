@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="follow">
 
-    <title>Page Title</title>
+    <title>Archivní systém</title>
 
     <base href="/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.24/css/uikit.min.css" />
@@ -24,12 +24,12 @@
 
   	<div class="uk-section uk-container">
   		<?php 
-  			echo "Hello world. Today is: ";
+  			echo "Dnes je: ";
   			echo date("Y m d");
   		?> 
   		<p>
-  			<a href="/login.php">Login</a>
-  			<a href="/register.php">Register</a>
+  			<a href="/login.php">Přihlášení</a>
+<!--  			<a href="/register.php">Register</a>-->
   		</p>
   	</div>
 
