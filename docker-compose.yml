@@ -1,0 +1,71 @@
+version: "3.7"
+
+services:
+  php-fpm:
+    build:
+      context: ./php-fpm
+    volumes:
+      - ./views:/var/www 
+  
+  mysql:
+    build:
+      context: ./mysql
+    ports:
+      - "3307:3306"
+    command:
+      - "--default-authentication-plugin=mysql_native_password"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql/db:/var/lib/mysql
+      - ./mysql/dbTemp:/temp/mysql:rw
+      - ./mysql/dbLog:/var/log/mysql:rw
+      - ./mysql/dbMigrations:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./views:/var/www
+      # - web-root:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/sites/:/etc/nginx/sites-available
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+      # - ./nginx-conf:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      # - certbot-etc:/etc/letsencrypt
+      # - certbot-var:/var/lib/letsencrypt
+    depends_on:
+      - php-fpm
+
+  # certbot:
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   volumes:
+  #     - certbot-etc:/etc/letsencrypt
+  #     - certbot-var:/var/lib/letsencrypt
+  #     - web-root:/var/www/html
+  #   depends_on:
+  #     - webserver
+  #   command: certonly --webroot --webroot-path=/var/www/html --email dolnma9@gmail.com --agree-tos --no-eff-email --staging -d example.com  -d archiv.dollys.eu
+
+volumes:
+  # certbot-etc:
+  # certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: //c/Users/dolnm/Documents/archiv/views/
+      o: bind

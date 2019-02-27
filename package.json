@@ -1,0 +1,22 @@
+{
+  "name": "System sledujici stav a dostupnost informacnich systemu archivu",
+  "version": "1.0",
+  "description": "nodejs image demo",
+  "author": "Marek Dolníček",
+  "license": "MIT",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/katjuell/nodejs-image-demo.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "net-ping": "^1.2.3",
+    "nodemailer": "^5.1.1"
+  }
+}
