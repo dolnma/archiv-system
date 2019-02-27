@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user_found) {
         // User exists, try and sign them in
         $user_id = (int)$user_found['id'];
-        $hash = (string)$user_found['password'];
+        $hash = password_hash($user_found['password'], PASSWORD_DEFAULT);
 
         if (password_verify($password, $hash)) {
             // User is signed in
             $return['redirect'] = '/dashboard.php';
 
-            $_SESSION['id'] = $user_id;
+            $_SESSION['user_id'] = $user_id;
         } else {
             // Invalid user email/password combo
             $return['error'] = "Špatné uživatelské heslo či email";

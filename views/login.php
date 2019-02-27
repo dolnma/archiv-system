@@ -28,19 +28,19 @@
   		<div class="uk-grid uk-child-width-1-3@s uk-child-width-1-1" uk-grid>
 			<form class="uk-form-stacked js-login">
 				
-				<h2>Login</h2>
+				<h2>Přihlášení</h2>
 
 			    <div class="uk-margin">
 			        <label class="uk-form-label" for="form-stacked-text">Email</label>
 			        <div class="uk-form-controls">
-			            <input class="uk-input" id="form-stacked-text" type="email" required='required' placeholder="email@email.com">
+			            <input class="uk-input" id="form-stacked-text" type="email" required='required' placeholder="Uživatelský email">
 			        </div>
 			    </div>
 
 			    <div class="uk-margin">
 			        <label class="uk-form-label" for="form-stacked-text">Heslo</label>
 			        <div class="uk-form-controls">
-			            <input class="uk-input" id="form-stacked-text" type="password" required='required' placeholder="Your Password">
+			            <input class="uk-input" id="form-stacked-text" type="password" required='required' placeholder="Heslo">
 			        </div>
 			    </div>
 
