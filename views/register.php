@@ -25,7 +25,7 @@
   <body>
 
   	<div class="uk-section uk-container">
-  		<div class="uk-grid uk-child-width-1-3@s uk-child-width-1-1" uk-grid>
+  		<div class="uk-grid uk-child-width-1-3@s uk-child-width-1-1">
 			<form class="uk-form-stacked js-register">
 				
 				<h2>Register</h2>

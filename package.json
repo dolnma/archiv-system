@@ -1,13 +1,14 @@
 {
-  "name": "System sledujici stav a dostupnost informacnich systemu archivu",
-  "version": "1.0",
+  "name": "dolnicek_bakalarska_prace",
   "description": "nodejs image demo",
   "author": "Marek Dolníček",
   "license": "MIT",
-  "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/katjuell/nodejs-image-demo.git"
+    "url": "https://github.com/dolnma/archiv-system"
+  },
+  "scripts": {
+    "start": "node start app.js"
   },
   "keywords": [
     "nodejs",

@@ -18,8 +18,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - ./mysql/db:/var/lib/mysql
-      - ./mysql/dbTemp:/temp/mysql:rw
-      - ./mysql/dbLog:/var/log/mysql:rw
+      - ./mysql/dbTemp:/temp/mysql
+      - ./mysql/dbLog:/var/log/mysql
       - ./mysql/dbMigrations:/docker-entrypoint-initdb.d
 
   adminer:
@@ -48,6 +48,24 @@ services:
       # - certbot-var:/var/lib/letsencrypt
     depends_on:
       - php-fpm
+
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile-nodejs
+    image: nodejs
+    user: node
+    working_dir: /nodejs/
+    volumes:
+      - ./nodejs/
+      - ./nodejs/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    container_name: nodejs
+    restart: unless-stopped
 
   # certbot:
   #   image: certbot/certbot
