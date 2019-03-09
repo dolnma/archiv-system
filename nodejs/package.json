@@ -2,22 +2,20 @@
   "name": "dolnicek_bakalarska_prace",
   "description": "nodejs image demo",
   "author": "Marek Dolníček",
+  "main": "app.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/dolnma/archiv-system"
   },
   "scripts": {
-    "start": "node start app.js"
+    "start": "nodemon ./app"
   },
-  "keywords": [
-    "nodejs",
-    "express"
-  ],
   "dependencies": {
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "net-ping": "^1.2.3",
-    "nodemailer": "^5.1.1"
+    "nodemailer": "^5.1.1",
+    "nodemon": "^1.18.10"
   }
 }
