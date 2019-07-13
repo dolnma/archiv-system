@@ -27,6 +27,10 @@ services:
     restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - php-fpm
+    links:
+      - mysql
 
   nginx:
     build:
@@ -38,44 +42,27 @@ services:
       - "443:443"
     volumes:
       - ./views:/var/www
-      # - web-root:/var/www/html
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/sites/:/etc/nginx/sites-available
       - ./nginx/conf.d/:/etc/nginx/conf.d
-      # - ./nginx-conf:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
-      # - certbot-etc:/etc/letsencrypt
-      # - certbot-var:/var/lib/letsencrypt
     depends_on:
       - php-fpm
 
-#  nodejs:
-#    build:
-#      context: ./nodejs
-#    volumes:
-#      - ./nodejs:/nodejs/app/
-#      - ./nodejs/app/node_modules/
-#    ports:
-#      - 3000:3000
-#    container_name: nodejs
-#    restart: always
-#    depends_on:
-#      - mysql
-
-  # certbot:
-  #   image: certbot/certbot
-  #   container_name: certbot
-  #   volumes:
-  #     - certbot-etc:/etc/letsencrypt
-  #     - certbot-var:/var/lib/letsencrypt
-  #     - web-root:/var/www/html
-  #   depends_on:
-  #     - webserver
-  #   command: certonly --webroot --webroot-path=/var/www/html --email dolnma9@gmail.com --agree-tos --no-eff-email --staging -d example.com  -d archiv.dollys.eu
+  nodejs:
+    build:
+      context: ./nodejs
+    volumes:
+      - ./nodejs:/nodejs/app/
+      - ./nodejs/app/node_modules/
+    ports:
+      - 3000:3000
+    container_name: nodejs
+    restart: always
+    depends_on:
+      - mysql
 
 volumes:
-  # certbot-etc:
-  # certbot-var:
   web-root:
     driver: local
     driver_opts:
