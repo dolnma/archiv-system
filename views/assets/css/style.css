@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+}
+input {
+    padding: 20px;
+    box-shadow: none;
+    border: 1px solid black;
+}
+.horni-lista {
+    color: white;
+    height: 70px;
+    background-color: gray;
+}
+.log-table {
+    background: #191919;
+    color: white;
+}
