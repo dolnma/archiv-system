@@ -13,7 +13,7 @@ class Page {
 			// The user is allowed here  
 		} else {
 			// The user is not allowed here. 
-			header("Location: /login.php"); exit;
+			header("Location: /index.php"); exit;
 		}
 	}
 

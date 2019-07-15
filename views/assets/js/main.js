@@ -105,3 +105,4 @@ $(document)
 	});
 	return false;
 });
+setTimeout(function(){ location.reload(); }, 10000);

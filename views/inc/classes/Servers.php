@@ -13,15 +13,17 @@ class Servers {
 	public $user_id;
 	public $email;
 	public $reg_time;
+    public $id;
 
-	public static function ServersTable() {
+    public static function ServersTable($id) {
 
 		$con = DB::getConnection();
-
-		$serversList = $con->prepare("SELECT id,ip FROM `servers` ORDER BY `id`");
-		$serversList->execute();
-
-		return $serversList->fetch(PDO::FETCH_ASSOC);
+        $logList = $con->prepare("SELECT id,server_id, message, status, date FROM `logs` WHERE server_id = ".$id." ORDER BY date DESC LIMIT 20");
+        $logList->execute();
+        $logs = $logList->fetchAll();
+        foreach ($logs as $log) {
+            return '<tr><td>' . $log['id'] . '</td><td>' . $log['server_id'] . '</td><td>' . $log['message'] . '</td><td>' . $log['status'] . '</td><td>' . $log['date'] .'</td></tr>';
+        }
 	}
 
 
